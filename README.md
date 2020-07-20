@@ -7,7 +7,6 @@ Nutanix API reference: https://www.nutanix.dev/reference/prism_element/v2/
 ### 1. Create a new Volume Group
 
 #### Required parameters
-* Required parameters:  
 * disk_list []
    * create_spec
       * container_uuid
