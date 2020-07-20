@@ -58,7 +58,7 @@ Result:
 * vm_uuid
 
 #### Sample
-URL: https://xxx.xxx.xxx.xxx:9440/api/nutanix/v2.0/volume_groups/63a1482f-83a8-4aed-91f4-9fe52b1a52b4/attach
+URL: https://xxx.xxx.xxx.xxx:9440/api/nutanix/v2.0/volume_groups/{uuid}/attach
 
 Payload:
 ```
@@ -83,7 +83,7 @@ Result:
 * volume_group_uuid
 
 #### Sample
-URL: https://xxx.xxx.xxx.xxx:9440/api/nutanix/v2.0/volume_groups/63a1482f-83a8-4aed-91f4-9fe52b1a52b4/disks
+URL: https://xxx.xxx.xxx.xxx:9440/api/nutanix/v2.0/volume_groups/{volume_group_uuid}/disks
 
 Payload
 ```
