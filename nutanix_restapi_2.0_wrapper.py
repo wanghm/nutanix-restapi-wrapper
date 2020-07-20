@@ -1,5 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+   A sample wrapper script of Nutanix Rest API V2.0 with test code
+   (Work In Process)
+"""
 import requests, urllib3, json
-
 class Nutanix_restapi_v2_wrapper():
     def __init__(self, username, password, base_url):
         self.username = username
