@@ -1,6 +1,8 @@
 # nutanix-restapi-wrapper
 
-## API Specification
+## Sample API Specification
+
+Nutanix API reference: https://www.nutanix.dev/reference/prism_element/v2/
 
 ### 1. Create a new Volume Group
 
@@ -68,6 +70,7 @@ Payload:
 ```
 
 Result:
+
 ![Result](resources/AttachVGroup2VM.png)
 
 ### 3. Add Disks to an existing Volume Group
