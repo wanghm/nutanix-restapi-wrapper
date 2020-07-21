@@ -23,15 +23,6 @@ class Nutanix_restapi_v2_wrapper():
         s.headers.update({'Content-Type': 'application/json; charset=utf-8'})
         return s.get(api_url, verify=False)
     
-    def http_get_with_payload(self, api_url, json_data):
-        # supress the security warnings
-        self.__supress_security()
-    
-        s = requests.Session()
-        s.auth = (self.username, self.password)
-        s.headers.update({'Content-Type': 'application/json; charset=utf-8'})
-    
-        return json.dumps(s.get(api_url, data=json_data, verify=False).json(), sort_keys=True)
     
     def http_post(self, api_url, json_data):
         # supress the security warnings
@@ -42,7 +33,14 @@ class Nutanix_restapi_v2_wrapper():
         s.headers.update({'Content-Type': 'application/json; charset=utf-8'})
         
         return s.post(api_url, data=json_data, verify=False)
-    
+
+    def http_put(self, api_url):
+        return
+
+    def http_delete(self, api_url):
+        return
+
+        
 
 def test1(nutanix_api_v2):
     # Get network list
@@ -116,7 +114,7 @@ if __name__ == "__main__":
     nutanix_api_v2 = Nutanix_restapi_v2_wrapper(username, password, base_url)
  
     # test1: get network list
-    #test1(nutanix_api_v2)
+    test1(nutanix_api_v2)
 
     # test2: create a volume group
     #test2(nutanix_api_v2)
@@ -125,5 +123,5 @@ if __name__ == "__main__":
     #test3(nutanix_api_v2)
 
     # test4: Add Disks to an existing Volume Group
-    test4(nutanix_api_v2)
+    #test4(nutanix_api_v2)
 
