@@ -3,7 +3,11 @@
 #  A sample wrapper script of Nutanix Rest API V2.0 with test code
 #  (Work In Process)
 ################################################################################
-import requests, urllib3, json
+import requests
+import urllib3
+import json
+import getpass
+
 class Nutanix_restapi_v2_wrapper():
     def __init__(self, username, password, base_url):
         self.username = username
@@ -44,8 +48,8 @@ class Nutanix_restapi_v2_wrapper():
         
 
 def test1(nutanix_api_v2):
-    # Get network list
-    api_url = base_url + "networks"
+    # Get VG list
+    api_url = base_url + "volume_groups"
     response = nutanix_api_v2.http_get(api_url)
      
     if not response.ok:
@@ -53,7 +57,13 @@ def test1(nutanix_api_v2):
         exit(1)
 
     d = json.loads(response.text)
-    print(json.dumps(d, indent=2))
+    #print(json.dumps(d, indent=2))
+    volume_groups = d["entities"]
+    for volume_group in volume_groups:
+        volume_group_name = volume_group["name"]
+        volume_group_uuid = volume_group["uuid"]
+        print(volume_group_uuid + ", " + volume_group_name)
+
 
 def test2(nutanix_api_v2):
     # Create a new Volume Group
@@ -74,7 +84,7 @@ def test2(nutanix_api_v2):
                 }
             }
         ],
-        "name": "test-vg-by-api-100"
+        "name": "test-vg-by-api-888"
     }
     payload_json = json.dumps(payload_dict)
     response = nutanix_api_v2.http_post(api_url, payload_json)
@@ -107,14 +117,15 @@ def test4(nutanix_api_v2):
     print(response.text)
 
 if __name__ == "__main__":
-    username = "user1"
-    password = "xxxxxxxx"
-    prism_host = "xxx.xxx.xxx.xxx"
+    prism_host = input("Prism Host: ")
+    username = input("Username: ")
+    password = getpass.getpass("password: ")
+
     base_url = "https://" + prism_host + ":9440/api/nutanix/v2.0/"
 
     nutanix_api_v2 = Nutanix_restapi_v2_wrapper(username, password, base_url)
  
-    # test1: get network list
+    # test1: get volume group list
     test1(nutanix_api_v2)
 
     # test2: create a volume group
