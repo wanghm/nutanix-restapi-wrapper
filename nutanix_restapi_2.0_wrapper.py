@@ -47,7 +47,7 @@ class Nutanix_restapi_v2_wrapper():
 
         
 
-def test1(nutanix_api_v2):
+def test1_1(nutanix_api_v2):
     # Get VG list
     api_url = base_url + "volume_groups"
     response = nutanix_api_v2.http_get(api_url)
@@ -58,11 +58,34 @@ def test1(nutanix_api_v2):
 
     d = json.loads(response.text)
     #print(json.dumps(d, indent=2))
+    print("")
+    print("volume_group_uuid                   , volume_group_name")
+    print("-------------------------------------------------------")
     volume_groups = d["entities"]
     for volume_group in volume_groups:
         volume_group_name = volume_group["name"]
         volume_group_uuid = volume_group["uuid"]
         print(volume_group_uuid + ", " + volume_group_name)
+
+def test1_2(nutanix_api_v2):
+    # Get vm list
+    api_url = base_url + "vms"
+    response = nutanix_api_v2.http_get(api_url)
+     
+    if not response.ok:
+        print(response.text)
+        exit(1)
+
+    d = json.loads(response.text)
+    #print(json.dumps(d, indent=2))
+    print("")
+    print("vm_uuid                             , vm_name")
+    print("-------------------------------------------------------")
+    vms = d["entities"]
+    for vm in vms:
+        vm_name = vm["name"]
+        vm_uuid = vm["uuid"]
+        print(vm_uuid + ", " + vm_name)
 
 
 def test2(nutanix_api_v2):
@@ -125,9 +148,12 @@ if __name__ == "__main__":
 
     nutanix_api_v2 = Nutanix_restapi_v2_wrapper(username, password, base_url)
  
-    # test1: get volume group list
-    test1(nutanix_api_v2)
+    # test1-1: get volume group list
+    test1_1(nutanix_api_v2)
 
+    # test1-2: get vm list
+    test1_2(nutanix_api_v2)
+    
     # test2: create a volume group
     #test2(nutanix_api_v2)
 
