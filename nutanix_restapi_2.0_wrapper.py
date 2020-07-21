@@ -93,7 +93,7 @@ def test3(nutanix_api_v2):
     print(response.text)
 
 def test4(nutanix_api_v2):
-    # Attach a Volume Group to a VM
+    # AAdd Disks to an existing Volume Group
     api_url = base_url + "volume_groups/63a1482f-83a8-4aed-91f4-9fe52b1a52b4/disks"
     payload_dict = {
         "create_spec": {
