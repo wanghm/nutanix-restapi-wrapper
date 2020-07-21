@@ -22,8 +22,7 @@ class Nutanix_restapi_v2_wrapper():
         s.auth = (self.username, self.password)
         s.headers.update({'Content-Type': 'application/json; charset=utf-8'})
         return s.get(api_url, verify=False)
-    
-    
+        
     def http_post(self, api_url, json_data):
         # supress the security warnings
         self.__supress_security()
@@ -35,9 +34,11 @@ class Nutanix_restapi_v2_wrapper():
         return s.post(api_url, data=json_data, verify=False)
 
     def http_put(self, api_url):
+        #todo
         return
 
     def http_delete(self, api_url):
+        #todo
         return
 
         
