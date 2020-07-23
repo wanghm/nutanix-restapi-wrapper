@@ -126,7 +126,7 @@ def test2(nutanix_api_v2):
                 }
             }
         ],
-        "name": "test-vg-by-api-1"
+        "name": "test-vg-by-api-2"
     }
     payload_json = json.dumps(payload_dict)
     response = nutanix_api_v2.http_post(api_url, payload_json)
@@ -134,10 +134,10 @@ def test2(nutanix_api_v2):
 
 def test3(nutanix_api_v2):
     # Attach a Volume Group to a VM
-    api_url = base_url + "volume_groups/7afdb0df-d1ae-4644-8734-f853ee200f70/attach"
+    api_url = base_url + "volume_groups/2fe130bd-68c1-4cf0-9b98-e7c28a36b3bb/attach"
     payload_dict = {
         "operation": "ATTACH",
-        "uuid": "7afdb0df-d1ae-4644-8734-f853ee200f70",
+        "uuid": "2fe130bd-68c1-4cf0-9b98-e7c28a36b3bb",
         "vm_uuid": "ac75f0c9-b397-4b2a-ad84-fabed87be101"
     }
     payload_json = json.dumps(payload_dict)
@@ -146,13 +146,13 @@ def test3(nutanix_api_v2):
 
 def test4(nutanix_api_v2):
     # AAdd Disks to an existing Volume Group
-    api_url = base_url + "volume_groups/7afdb0df-d1ae-4644-8734-f853ee200f70/disks"
+    api_url = base_url + "volume_groups/2fe130bd-68c1-4cf0-9b98-e7c28a36b3bb/disks"
     payload_dict = {
         "create_spec": {
         "container_uuid": "656030a3-49fe-4761-8d7f-39f56013ee22",
         "size_mb": 40960
         },
-        "volume_group_uuid": "7afdb0df-d1ae-4644-8734-f853ee200f70"
+        "volume_group_uuid": "2fe130bd-68c1-4cf0-9b98-e7c28a36b3bb"
     }
     payload_json = json.dumps(payload_dict)
     response = nutanix_api_v2.http_post(api_url, payload_json)
@@ -162,7 +162,6 @@ if __name__ == "__main__":
     prism_host = input("Prism Host: ")
     username = input("Username: ")    
     password = getpass.getpass("password: ")
-
     base_url = "https://" + prism_host + ":9440/api/nutanix/v2.0/"
 
     nutanix_api_v2 = Nutanix_restapi_v2_wrapper(username, password, base_url)
@@ -183,5 +182,5 @@ if __name__ == "__main__":
     #test3(nutanix_api_v2)
 
     # test4: Add Disks to an existing Volume Group
-    test4(nutanix_api_v2)
+    # test4(nutanix_api_v2)
 
