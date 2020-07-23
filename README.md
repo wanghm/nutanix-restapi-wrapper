@@ -112,7 +112,7 @@ Result:
 
 ### 4. Add client IP/iqn to the Volume Group
 
-#### URL: https://xxx.xxx.xxx.xxx:9440/api/nutanix/v2.0/volume_groups/{volume_group_uuid}/disks
+#### URL: https://xxx.xxx.xxx.xxx:9440/api/nutanix/v2.0/volume_groups/{volume_group_uuid}/open
 
 #### Required Parameters
 * iscsi_client
