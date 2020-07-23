@@ -117,6 +117,9 @@ Result:
 #### Required Parameters
 * iscsi_client
   * client_address: client IP or iqn
+  * enabled_authentications
+    * auth_type: "CHAP"
+    * password: password
 * operation: "ATTACH" (fixed value)
 * uuid: uuid of Voluume Group
 
@@ -124,9 +127,16 @@ Result:
 ```
 {
   "iscsi_client": {
-  "client_address": "iqn.1994-05.com.redhat:78597e13914"
+  "client_address": "iqn.1994-05.com.redhat:78597e13914",
+  "enabled_authentications": [
+      {
+        "auth_type": "CHAP",
+        "password": "abcd1234abcd1234"
+      }
+    ]
   },
   "operation": "ATTACH",
-  "uuid": "54ee3438-40fd-44ca-b628-95534bd3add3"
+  "uuid": "1db44ae8-1f25-4996-a289-6ee522311d4d"
 }
 ```
+
