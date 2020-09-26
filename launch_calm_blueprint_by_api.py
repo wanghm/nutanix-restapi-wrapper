@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ################################################################################
-#  A sample wrapper script of Nutanix Rest API V2.0 with test code
+#  A sample wrapper script of Nutanix Rest API with test code
 #  (Work In Process)
 ################################################################################
 import requests
@@ -69,7 +69,6 @@ def get_bp_uuid(nutanix_api_v3, target_bp_name):
             
 
 def get_app_profile_uuid(nutanix_api_v3, bp_uuid):
-    # Get Storage Container list
     api_url = base_url + "blueprints/" + bp_uuid + "/runtime_editables"
     response = nutanix_api_v3.http_get(api_url)
      
