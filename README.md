@@ -142,3 +142,11 @@ Result:
 
 ### 5. Launch calm blueprint by API
 
+```base_url = "https://" + prism_host + ":9440/api/nutanix/v3/"```
+
+1. get uuid of bluueprint by name (get_bp_uuid)  
+```api_url = base_url + "/blueprints/list"```
+1. get uuid of app profile  
+```api_url = base_url + "blueprints/" + bp_uuid + "/runtime_editables"```
+1. launch blurprint  
+```api_url = base_url + "/blueprints/" + bp_uuid + "/simple_launch"```
